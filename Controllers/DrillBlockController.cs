@@ -6,7 +6,7 @@ using Microsoft.AspNetCore.Mvc;
 namespace DrillWebApi.Controllers
 {
     [ApiController]
-    [Route("drill_blocks")]
+    [Route("drill_block")]
     public class DrillBlockController : ControllerBase
     {
         private readonly IDrillBlockRepository repository;

@@ -9,6 +9,7 @@ namespace DrillWebApi.Persistence
         private readonly string connectionString;
         public DbSet<DrillBlock> DrillBlocks { get; set; }
         public DbSet<Hole> Holes { get; set; }
+        public DbSet<HoleLocation> HoleLocations { get; set; }
 
         public ApplicationContext(string connectionString)
         {

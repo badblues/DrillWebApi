@@ -6,7 +6,7 @@ using Microsoft.AspNetCore.Mvc;
 namespace DrillWebApi.Controllers
 {
     [ApiController]
-    [Route("holes")]
+    [Route("hole")]
     public class HoleController : ControllerBase
     {
         private readonly IHoleRepository repository;
@@ -54,13 +54,13 @@ namespace DrillWebApi.Controllers
             {
                 return NotFound();
             }
-            Hole updatedhole = existingHole with
+            Hole updatedHole = existingHole with
             {
                 DrillBlockId = holeDto.DrillBlockId,
                 Name = holeDto.Name,
                 Depth = holeDto.Depth
             };
-            repository.UpdateHole(updatedhole);
+            repository.UpdateHole(updatedHole);
             return NoContent();
         }
 

@@ -22,6 +22,7 @@ namespace DrillWebApi
             });
             builder.Services.AddSingleton<IDrillBlockRepository, DbDrillBlockRepository>();
             builder.Services.AddSingleton<IHoleRepository, DbHoleRepository>();
+            builder.Services.AddSingleton<IHoleLocationRepository, DbHoleLocationRepository>();
 
             var app = builder.Build();
 
