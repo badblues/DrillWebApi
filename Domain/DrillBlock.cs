@@ -6,5 +6,6 @@
         public string Name { get; set; }
         public DateTime UpdateDate { get; set; }
         public ICollection<Hole> Holes { get; set; }
+        public ICollection<DrillBlockPoint> Points { get; set; }
     }
 }

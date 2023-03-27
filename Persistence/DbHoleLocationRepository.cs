@@ -24,7 +24,7 @@ namespace DrillWebApi.Persistence
 
         public bool CreateHoleLocation(HoleLocation holeLocation)
         {
-            if (db.Holes.Find(holeLocation.HoleId) == null)
+            if (db.HoleLocations.Find(holeLocation.HoleId) == null)
                 return false;
             db.HoleLocations.Add(holeLocation);
             db.SaveChanges();
@@ -33,7 +33,7 @@ namespace DrillWebApi.Persistence
 
         public void UpdateHoleLocation(HoleLocation holeLocation)
         {
-            var res = db.Holes.SingleOrDefault(h => h.Id == holeLocation.Id);
+            var res = db.HoleLocations.SingleOrDefault(h => h.Id == holeLocation.Id);
             db.Entry(res).CurrentValues.SetValues(holeLocation);
             db.SaveChanges();
         }
