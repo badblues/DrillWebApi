@@ -32,7 +32,7 @@ namespace DrillWebApi.Controllers
         }
 
         [HttpPost]
-        public ActionResult<DrillBlock> CreateTodoTask(InputDrillBlockDto blockDto)
+        public ActionResult<DrillBlock> CreateDrillBlock(InputDrillBlockDto blockDto)
         {
             DrillBlock block = new()
             {
@@ -42,6 +42,35 @@ namespace DrillWebApi.Controllers
             };
             repository.CreateDrillBlock(block);
             return CreatedAtAction(nameof(GetDrillBlock), new { id = block.Id }, block);
+        }
+
+        [HttpPut("{id}")]
+        public ActionResult UpdateDrillBlock(Guid id, InputDrillBlockDto blockDto)
+        {
+            var existingBlock = repository.GetDrillBlock(id);
+            if (existingBlock == null)
+            {
+                return NotFound();
+            }
+            DrillBlock updatedBlock = existingBlock with
+            {
+                Name = blockDto.Name,
+                UpdateDate = blockDto.UpdateDate
+            };
+            repository.UpdateDrillBlock(updatedBlock);
+            return NoContent();
+        }
+
+        [HttpDelete]
+        public ActionResult DeleteDrillBlock(Guid id)
+        {
+            var existingDrillBlock= repository.GetDrillBlock(id);
+            if (existingDrillBlock is null)
+            {
+                return NotFound();
+            }
+            repository.DeleteDrillBlock(id);
+            return NoContent();
         }
     }
 }

@@ -13,8 +13,8 @@ namespace DrillWebApi.Persistence
 
         public DrillBlock? GetDrillBlock(Guid id)
         {
-            DrillBlock? task = db.DrillBlocks.Find(id);
-            return task;
+            DrillBlock? block = db.DrillBlocks.Find(id);
+            return block;
         }
         public IEnumerable<DrillBlock> GetDrillBlocks()
         {

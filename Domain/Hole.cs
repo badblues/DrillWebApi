@@ -1,11 +1,10 @@
 ﻿namespace DrillWebApi.Domain
 {
-    public class Hole
+    public record Hole
     {
         public Guid Id { get; init; }
-        public Guid DrillBlockId { get; init; }
+        public Guid DrillBlockId { get; set; }
         public string Name { get; set; }
-        public DateTime UpdateDate { get; set; }
         public double Depth { get; set; }
     }
 }

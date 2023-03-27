@@ -1,6 +1,6 @@
 ﻿namespace DrillWebApi.Domain
 {
-    public class DrillBlockPoints
+    public record DrillBlockPoints
     {
         public Guid Id { get; init; }
         public Guid DrillBlockId { get; init; }

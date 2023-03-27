@@ -1,5 +1,6 @@
 ﻿using DrillWebApi.Domain;
 using Microsoft.EntityFrameworkCore;
+using System.Diagnostics;
 
 namespace DrillWebApi.Persistence
 {
@@ -7,12 +8,12 @@ namespace DrillWebApi.Persistence
     {
         private readonly string connectionString;
         public DbSet<DrillBlock> DrillBlocks { get; set; }
+        public DbSet<Hole> Holes { get; set; }
 
         public ApplicationContext(string connectionString)
         {
             this.connectionString = connectionString;
             Database.EnsureCreated();
-            Database.EnsureDeleted();
         }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
