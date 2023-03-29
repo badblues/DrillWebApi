@@ -32,6 +32,8 @@ namespace DrillWebApi.Persistence
         public bool UpdateDrillBlock(DrillBlock block)
         {
             var res = db.DrillBlocks.SingleOrDefault(b => b.Id == block.Id);
+            if (res == null)
+                return false;
             db.Entry(res).CurrentValues.SetValues(block);
             db.SaveChanges();
             return true;

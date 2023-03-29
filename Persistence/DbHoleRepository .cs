@@ -36,6 +36,8 @@ namespace DrillWebApi.Persistence
             if (db.DrillBlocks.Find(hole.DrillBlockId) == null)
                 return false;
             var res = db.Holes.SingleOrDefault(h => h.Id == hole.Id);
+            if (res == null)
+                return false;
             db.Entry(res).CurrentValues.SetValues(hole);
             db.SaveChanges();
             return true;
