@@ -7,7 +7,7 @@ namespace DrillWebApi.Persistence.Interfaces
         HoleLocation? GetHoleLocation(Guid id);
         IEnumerable<HoleLocation> GetHoleLocations();
         bool CreateHoleLocation(HoleLocation holeLocation);
-        void UpdateHoleLocation(HoleLocation holeLocation);
+        bool UpdateHoleLocation(HoleLocation holeLocation);
         void DeleteHoleLocation(Guid id);
     }
 }

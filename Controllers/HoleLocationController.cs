@@ -62,7 +62,8 @@ namespace DrillWebApi.Controllers
                 Y = holeLocationDto.Y,
                 Z = holeLocationDto.Z
             };
-            repository.UpdateHoleLocation(updatedHole);
+            if (!repository.UpdateHoleLocation(updatedHole))
+                return NotFound();
             return NoContent();
         }
 

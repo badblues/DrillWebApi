@@ -64,7 +64,8 @@ namespace DrillWebApi.Controllers
                 Y = drillBlockPointDto.Y,
                 Z = drillBlockPointDto.Z
             };
-            repository.UpdateDrillBlockPoint(updatedDrillBlockPoint);
+            if (!repository.UpdateDrillBlockPoint(updatedDrillBlockPoint))
+                return NotFound();
             return NoContent();
         }
 
