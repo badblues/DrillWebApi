@@ -8,6 +8,6 @@ namespace DrillWebApi.Persistence.Interfaces
         IEnumerable<Hole> GetHoles();
         bool CreateHole(Hole hole);
         bool UpdateHole(Hole hole);
-        void DeleteHole(Guid id);
+        bool DeleteHole(Guid id);
     }
 }

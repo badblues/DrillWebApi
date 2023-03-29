@@ -40,8 +40,9 @@ namespace DrillWebApi.Controllers
                 Name = blockDto.Name,
                 UpdateDate = blockDto.UpdateDate
             };
-            repository.CreateDrillBlock(block);
-            return CreatedAtAction(nameof(GetDrillBlock), new { id = block.Id }, block);
+            if (!repository.CreateDrillBlock(block))
+                return NoContent();
+            return block;
         }
 
         [HttpPut("{id}")]
@@ -57,19 +58,16 @@ namespace DrillWebApi.Controllers
                 Name = blockDto.Name,
                 UpdateDate = blockDto.UpdateDate
             };
-            repository.UpdateDrillBlock(updatedBlock);
+            if (!repository.UpdateDrillBlock(updatedBlock))
+                return NotFound();
             return NoContent();
         }
 
         [HttpDelete]
         public ActionResult DeleteDrillBlock(Guid id)
         {
-            var existingDrillBlock= repository.GetDrillBlock(id);
-            if (existingDrillBlock is null)
-            {
+            if (!repository.DeleteDrillBlock(id))
                 return NotFound();
-            }
-            repository.DeleteDrillBlock(id);
             return NoContent();
         }
     }

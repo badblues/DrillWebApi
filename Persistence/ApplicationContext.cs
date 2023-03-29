@@ -1,6 +1,5 @@
 ﻿using DrillWebApi.Domain;
 using Microsoft.EntityFrameworkCore;
-using System.Diagnostics;
 
 namespace DrillWebApi.Persistence
 {

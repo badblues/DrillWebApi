@@ -72,12 +72,8 @@ namespace DrillWebApi.Controllers
         [HttpDelete]
         public ActionResult DeleteDrillBlockPoint(Guid id)
         {
-            var existingDrillBlockPoint = repository.GetDrillBlockPoint(id);
-            if (existingDrillBlockPoint is null)
-            {
+            if (!repository.DeleteDrillBlockPoint(id))
                 return NotFound();
-            }
-            repository.DeleteDrillBlockPoint(id);
             return NoContent();
         }
     }

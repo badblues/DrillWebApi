@@ -41,14 +41,14 @@ namespace DrillWebApi.Persistence
             return true;
         }
 
-        public void DeleteDrillBlockPoint(Guid id)
+        public bool DeleteDrillBlockPoint(Guid id)
         {
             DrillBlockPoint? drillBlockPoint = db.DrillBlockPoints.Find(id);
-            if (drillBlockPoint != null)
-            {
-                db.Remove(drillBlockPoint);
-                db.SaveChanges();
-            }
+            if (drillBlockPoint == null)
+                return false;
+            db.Remove(drillBlockPoint);
+            db.SaveChanges();
+            return true;
         }
     }
 }

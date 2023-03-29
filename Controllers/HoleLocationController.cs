@@ -2,6 +2,7 @@ using DrillWebApi.Domain;
 using DrillWebApi.Dtos;
 using DrillWebApi.Persistence.Interfaces;
 using Microsoft.AspNetCore.Mvc;
+using System.Diagnostics.CodeAnalysis;
 
 namespace DrillWebApi.Controllers
 {
@@ -70,12 +71,8 @@ namespace DrillWebApi.Controllers
         [HttpDelete]
         public ActionResult DeleteHoleLocation(Guid id)
         {
-            var existingHoleLocation = repository.GetHoleLocation(id);
-            if (existingHoleLocation is null)
-            {
+            if (!repository.DeleteHoleLocation(id))
                 return NotFound();
-            }
-            repository.DeleteHoleLocation(id);
             return NoContent();
         }
     }

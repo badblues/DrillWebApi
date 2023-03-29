@@ -22,27 +22,29 @@ namespace DrillWebApi.Persistence
             return list;
         }
 
-        public void CreateDrillBlock(DrillBlock block)
+        public bool CreateDrillBlock(DrillBlock block)
         {
             db.DrillBlocks.Add(block);
             db.SaveChanges();
+            return true;
         }
 
-        public void UpdateDrillBlock(DrillBlock block)
+        public bool UpdateDrillBlock(DrillBlock block)
         {
             var res = db.DrillBlocks.SingleOrDefault(b => b.Id == block.Id);
             db.Entry(res).CurrentValues.SetValues(block);
             db.SaveChanges();
+            return true;
         }
 
-        public void DeleteDrillBlock(Guid id)
+        public bool DeleteDrillBlock(Guid id)
         {
             DrillBlock? block = db.DrillBlocks.Find(id);
-            if (block != null)
-            {
-                db.Remove(block);
-                db.SaveChanges();
-            }
+            if (block == null)
+                return false;
+            db.Remove(block);
+            db.SaveChanges();
+            return true;
         }
     }
 }

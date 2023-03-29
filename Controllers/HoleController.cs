@@ -68,12 +68,8 @@ namespace DrillWebApi.Controllers
         [HttpDelete]
         public ActionResult DeleteHole(Guid id)
         {
-            var existingHole = repository.GetHole(id);
-            if (existingHole is null)
-            {
+            if (!repository.DeleteHole(id))
                 return NotFound();
-            }
-            repository.DeleteHole(id);
             return NoContent();
         }
     }

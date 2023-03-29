@@ -8,6 +8,6 @@ namespace DrillWebApi.Persistence.Interfaces
         IEnumerable<DrillBlockPoint> GetDrillBlockPoints();
         bool CreateDrillBlockPoint(DrillBlockPoint drillBlockPoint);
         bool UpdateDrillBlockPoint(DrillBlockPoint drillBlockPoint);
-        void DeleteDrillBlockPoint(Guid id);
+        bool DeleteDrillBlockPoint(Guid id);
     }
 }

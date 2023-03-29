@@ -41,14 +41,14 @@ namespace DrillWebApi.Persistence
             return true;
         }
 
-        public void DeleteHole(Guid id)
+        public bool DeleteHole(Guid id)
         {
             Hole? hole = db.Holes.Find(id);
-            if (hole != null)
-            {
-                db.Remove(hole);
-                db.SaveChanges();
-            }
+            if (hole == null)
+                return false;
+            db.Remove(hole);
+            db.SaveChanges();
+            return true;
         }
     }
 }
